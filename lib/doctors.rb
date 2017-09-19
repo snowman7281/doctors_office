@@ -41,12 +41,12 @@ class Doctors
 
   def patients
   doctor_patients = []
-  patients = DB.exec("SELECT * FROM tasks WHERE dr_id = #{self.dr_id()};")
+  patients = DB.exec("SELECT * FROM patient WHERE dr_id = #{self.id()};")
   patients.each() do |patient|
     name = patient.fetch("name")
     dr_id = patient.fetch("dr_id").to_i()
     doctor_patients.push(Patients.new({:dr_id => dr_id, :name => name}))
   end
-  list_tasks
+  doctor_patients
 end
 end

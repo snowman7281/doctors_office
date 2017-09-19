@@ -1,11 +1,11 @@
-<h1>Your Current Doctors</h1>
+<h1><%= @doctors.name %></h1>
 
-<% if @doctors.any?() %>
+<% if @doctors.patients.any?() %>
   <h3>Here are all the doctors in this patient:</h3>
 
   <ul>
-    <% @doctors.each() do |doctor| %>
-    <li><a href="/doctors/<%= doctor.id()%>"><%= doctor.name() %></a> </li>
+    <% @doctors.patients().each() do |patient| %>
+    <li><%= patient.name() %></a> </li>
   <% end %>
   </ul>
 
