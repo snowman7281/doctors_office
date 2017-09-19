@@ -40,4 +40,13 @@ describe(Doctors) do
       expect(Doctors.all()).to(eq([doctor]))
     end
   end
+
+
+  describe("#==") do
+    it("is the same doctor if it has the same name") do
+      doctor1 = Doctors.new({:id => nil, :name => "Dr.Snow Vilay", :speciality => "oncology"})
+      doctor2 = Doctors.new({:id => nil, :name => "Dr.Snow Vilay", :speciality => "oncology"})
+      expect(doctor1).to(eq(doctor2))
+    end
+  end
 end
