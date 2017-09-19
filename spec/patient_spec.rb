@@ -38,4 +38,12 @@ describe(Patients) do
       expect(test_patient.dr_id()).to(eq(1))
     end
   end
+
+  describe("#==") do
+    it("is the same task if it has the same description and list ID") do
+      patient1 = Patients.new({:dr_id => 1, :name => "Bably Kumari"})
+      patient2 = Patients.new({:dr_id => 1, :name => "Bably Kumari"})
+      expect(patient1).to(eq(patient2))
+    end
+  end
 end
