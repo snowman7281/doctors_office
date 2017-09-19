@@ -24,4 +24,20 @@ describe(Doctors) do
       expect(doctor.name()).to(eq("Dr.Snow Vilay"))
     end
   end
+
+  describe("#id") do
+    it("sets its ID when you save it") do
+      doctor = Doctors.new({:id => nil, :name => "Dr.Snow Vilay", :speciality => "oncology"})
+      doctor.save()
+      expect(doctor.id()).to(be_an_instance_of(Fixnum))
+    end
+  end
+
+  describe("#save") do
+    it("lets you save lists to the database") do
+      doctor = Doctors.new({:id => nil, :name => "Dr.Snow Vilay", :speciality => "oncology"})
+      doctor.save()
+      expect(Doctors.all()).to(eq([doctor]))
+    end
+  end
 end
