@@ -24,4 +24,11 @@ describe(Patients) do
       expect(Patients.all()).to(eq([test_patient]))
     end
   end
+
+  describe("#name") do
+   it("lets you read the names out") do
+     test_patient = Patients.new({:dr_id => 1, :name => "Bably Kumari"})
+     expect(test_patient.name()).to(eq("Bably Kumari"))
+   end
+ end
 end
