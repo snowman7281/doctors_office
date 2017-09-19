@@ -1,5 +1,6 @@
 class Patients
   attr_reader(:dr_id, :name)
+
   def initialize(attributes)
     @dr_id = attributes.fetch(:dr_id)
     @name = attributes.fetch(:name)

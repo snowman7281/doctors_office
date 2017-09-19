@@ -1,6 +1,6 @@
 class Doctors
 
-  attr_reader(:id, :name,  :speciality)
+  attr_reader(:id, :name, :speciality)
 
   def initialize(attributes)
     @id = attributes.fetch(:id)
@@ -28,4 +28,25 @@ class Doctors
   def ==(another_doctor)
     self.name().==(another_doctor.name()).&(self.id().==(another_doctor.id()))
   end
+
+  def self.find(id)
+    found_doctor = nil
+    Doctors.all().each() do |doctor|
+      if doctor.id().==(id)
+        found_doctor = doctor
+      end
+    end
+    found_doctor
+  end
+
+  def patients
+  doctor_patients = []
+  patients = DB.exec("SELECT * FROM tasks WHERE dr_id = #{self.dr_id()};")
+  patients.each() do |patient|
+    name = patient.fetch("name")
+    dr_id = patient.fetch("dr_id").to_i()
+    doctor_patients.push(Patients.new({:dr_id => dr_id, :name => name}))
+  end
+  list_tasks
+end
 end
